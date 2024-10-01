@@ -1,5 +1,17 @@
 # coastal_trapped_waves
 
+# Diary
+
+30.09.2024
+
+My next objective is to check the correlation of key tide gauges agains the filtered signal of the altimetry grids. This was done pointwise in analyse_tg_ctw_withswot.ipynb, but I would like to do it spatially. Firstly, I have to create a local filtered gridded dataset of the altimetry grids. 
+In order to do this, I create a notebook called create_filtered_grids. I will have to save separetely every filtered time series and then try to create a new daily grid using each point of the different time series...is this realistic? 
+
+01.10.2024
+
+For now in create_filtered_grids there are two parts. One that save separately every filtered time series and the other that builds back the filtered daily grids. For now, they are just test files. The second part seems quick enough. But the first part is taking 72 seconds for 100 successful points. We may have 10000 successfull points, so it could be too slow?
+
+
 
 
 ## Getting started
