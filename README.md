@@ -11,6 +11,10 @@ In order to do this, I create a notebook called create_filtered_grids. I will ha
 
 For now in create_filtered_grids there are two parts. One that save separately every filtered time series and the other that builds back the filtered daily grids. For now, they are just test files. The second part seems quick enough. But the first part is taking 72 seconds for 100 successful points. We may have 10000 successfull points, so it could be too slow?
 
+02.10.2024
+
+I have copied the first part of the function into a create_filtered_time_series.py code and I am launching it to have a first complete run, then I can see if I can speed up the code. I have copied the second part in create_filtered_grids.py, but it takes 2 minutes per day, which is a bit too long...I am launching it anyway. Once I have the dataset the next step would be to correlate with tide gauge.
+
 
 
 
