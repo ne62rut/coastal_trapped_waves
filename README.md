@@ -1,19 +1,68 @@
 # coastal_trapped_waves
 
+# How to process
+
+. gesla_processing_australia2023addon.ipynb 
+    takes high-frequency tide gauge records from GESLA 3, averages them as hourly records, select for a specific year and region, smooths them by means of a lowess filter to remove tide contributions and correct them for the Dynamic Atmospheric Correction. The whole processing is needed to make GESLA dataset comparable to altimetry estimations. This particular code is adapted to process tide gauges in Australia for 2023, which are not yet part of GESLA 3. The original general code is gesla_processing.ipynb
+    
+. model_data_reader.ipynb
+    takes data from the bluelink reanalysis and saves them as daily grids similar to SWOT format 
+    
+. analyse_tg_ctw_withswot.ipynb
+    isolates a set of TGs in Australia, filter them (saving the filtered version externally) and compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges
+    
+. create_filtered_time_series.py
+    takes L4 products and create for each grid point a time series filtered in time, which is saved separately
+    
+. create_filtered_grids.py 
+    from the output of 3. reconstructs a daily L4 product, containing the signal filtered in time. There is also a ipynb version of it showing some plots.
+    
+. correlate_tg_with_grids.ipynb
+    takes the output of 2. (filtered tide gauges time series) and 3. (filtered altimetry time series) and correlate them, by offering the possibility to select a lag correlation
+
+
 # Diary
+
+23.10.2024
+create_filtered_time_series has been extended to include bluelink data. general_checks.ipynb was created as a quit tool to check outputs
+
+21.10.2024
+
+I wrote to Ballarotta and sammy.metref@datlas.fr. They have a version of MIOST without SWOT, but unfortunately also without SWOT Nadir and Altika. Still interesting to understand the impact of the interpolation method rather than of SWOT. I have put the data into DGFI8/D/SWOT_L4 as "mapping_0.0_360.0_-80.0_90.0_20230228_20230730_c2n_h2b_j3n_s3a_s3b_s6a_hr_component_geos_barotrop_eqwaves_lwe"
+But I should also analyse the model data (bluelink ocean reanalysis), which I have put into /DGFI8/D/sealevel/bluelink_oceanreanalysis.
+I am writing model_data_reader.ipynb in order to save the bluelink data in the same format of SWOT data, as daily grid files, but I have difficulties in changing the naming of the dimensions from xt,yt to longitude and latitude...
+
+
+
+15.10.2024
+
+Keep in mind that we are using the "Experimental Multimission Level-4 maps with SWOT" from https://www.aviso.altimetry.fr/en/news/front-page-news/news-detail.html?tx_ttnews%5Btt_news%5D=2991&cHash=657ff58f9f96f01b4c57b484d7818567
+From the user manual available I understand that this is NOT using 4D-Var, which is only used in the North Atlantic. Instead, the method used in MIOST (Multiscale Inversion of Ocean Surface Topography)...is it any different from the method used inthe standard CMEMS maps? The correct reference to read is https://doi.org/10.5194/egusphere-2024-2345 . Note also that these grids are just 1/10 of a degree!
+I have put an option to add lag correlation in correlate_tg_with_grids. I should make a video of 0 to 5 days. What I am missing now is to put the model in, and to compute the speed.
+I should consider writing to florian.leguillou@datlas.fr to get the 4D-VAR with and without SWOT.
+
+11.10.2024
+
+From analyse_tg_ctw_withswot.ipynb, which is too long, I want to save filtered tide gauge time series in a folder called filtered_time_series_tidegauges. I will do this later, for now I have added a section in the same notebook, where the correlation of each tide gauge against the SWOT filtered data is shown. But it takes time, so I should externalise it, once I have saved the filtered tide gauge time series. I externalise it in a notebook called "correlate_tg_with_grids.ipynb"
+
+
+
+02.10.2024
+
+I have copied the first part of the function into a create_filtered_time_series.py code and I am launching it to have a first complete run, then I can see if I can speed up the code. I have copied the second part in create_filtered_grids.py, but it takes 2 minutes per day, which is a bit too long...I am launching it anyway. Once I have the dataset the next step would be to correlate with tide gauge.
+
+
+
+01.10.2024
+
+For now in create_filtered_grids there are two parts. One that save separately every filtered time series and the other that builds back the filtered daily grids. For now, they are just test files. The second part seems quick enough. But the first part is taking 72 seconds for 100 successful points. We may have 10000 successfull points, so it could be too slow?
+
 
 30.09.2024
 
 My next objective is to check the correlation of key tide gauges agains the filtered signal of the altimetry grids. This was done pointwise in analyse_tg_ctw_withswot.ipynb, but I would like to do it spatially. Firstly, I have to create a local filtered gridded dataset of the altimetry grids. 
 In order to do this, I create a notebook called create_filtered_grids. I will have to save separetely every filtered time series and then try to create a new daily grid using each point of the different time series...is this realistic? 
 
-01.10.2024
-
-For now in create_filtered_grids there are two parts. One that save separately every filtered time series and the other that builds back the filtered daily grids. For now, they are just test files. The second part seems quick enough. But the first part is taking 72 seconds for 100 successful points. We may have 10000 successfull points, so it could be too slow?
-
-02.10.2024
-
-I have copied the first part of the function into a create_filtered_time_series.py code and I am launching it to have a first complete run, then I can see if I can speed up the code. I have copied the second part in create_filtered_grids.py, but it takes 2 minutes per day, which is a bit too long...I am launching it anyway. Once I have the dataset the next step would be to correlate with tide gauge.
 
 
 
