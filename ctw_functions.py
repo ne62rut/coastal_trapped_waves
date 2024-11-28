@@ -3,6 +3,7 @@
 
 # In[ ]:
 from scipy.signal import butter, filtfilt
+import numpy as np
 
 # Define the Butterworth bandpass filter
 def butter_bandpass(lowcut, highcut, fs, order=5):

@@ -7,9 +7,10 @@
     
 . model_data_reader.ipynb
     takes data from the bluelink reanalysis and saves them as daily grids similar to SWOT format 
+
+. create_filtered_time_series_tg.ipynb 
+    isolates a set of TGs in Australia and filter them (saving the filtered version externally)
     
-. analyse_tg_ctw_withswot.ipynb
-    isolates a set of TGs in Australia, filter them (saving the filtered version externally) and compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges
     
 . create_filtered_time_series.py
     takes L4 products and create for each grid point a time series filtered in time, which is saved separately
@@ -20,10 +21,24 @@
 . correlate_tg_with_grids.ipynb
     takes the output of 2. (filtered tide gauges time series) and 3. (filtered altimetry time series) and correlate them, by offering the possibility to select a lag correlation
 
+. correlate_tg_with_grids_1d.ipynb 
+    compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges
+
 
 # Diary
 
+28.11.2024
+I have created correlate_tg_with_grids_1d.ipynb as described below, but I have expanded it also to include the model time series. Then, I should do the analysis of the Hovmoller diagrams computing the phase speed and possibly the EOF analysis
+
+24.10.2024
+Next step is to put the correlation analysis from analyse_tg_ctw_withswot.ipynb on a separate independent code. And then in yet another code the analysis of the Hovmöller diagrams. We can call it correlate_tg_with_grids_1d.ipynb
+
+
 23.10.2024
+temp_phase_speed_computation was written to demonstrate synthetically that, given a Hovmöller diagram, we can compute the phase speed of a Kelvin wave. 
+I want to separate analyse_tg_ctw_withswot.ipynb in different functions that use the fact that I am saving externally the filtered time series. First of all, I separate the isolation and filtering of the tide gauges. This is now done in create_filtered_time_series_tg.ipynb. The next step is to remove those blocks from analyse_tg_ctw_withswot.ipynb and do the computations of that code by loading the externally created datasets.
+
+22.10.2024
 create_filtered_time_series has been extended to include bluelink data. general_checks.ipynb was created as a quit tool to check outputs
 
 21.10.2024
