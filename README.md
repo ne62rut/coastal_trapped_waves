@@ -23,9 +23,15 @@
 
 . correlate_tg_with_grids_1d.ipynb 
     compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges
+    
+. phase_speed_computation.ipynb 
+    compare the Hovmoller diagrams of the filtered signals and compute the phase speed with the radon transform
 
 
 # Diary
+
+15.01.2025
+Hovmoller diagrams created with phase speed computed, in phase_speed_computation.ipynb
 
 28.11.2024
 I have created correlate_tg_with_grids_1d.ipynb as described below, but I have expanded it also to include the model time series. Then, I should do the analysis of the Hovmoller diagrams computing the phase speed and possibly the EOF analysis
