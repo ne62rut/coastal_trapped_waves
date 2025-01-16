@@ -30,6 +30,9 @@
 
 # Diary
 
+16.01.2025
+I have started EOF_analysis. it seems to work for bluelink, but I don't know why it is not working for SWOT...probably something to do with the grid points coordinates? I am trying to isolate points closer than 20 or 50 km to the coastline, but they seem to be too few for SWOT...
+
 15.01.2025
 Hovmoller diagrams created with phase speed computed, in phase_speed_computation.ipynb
 
