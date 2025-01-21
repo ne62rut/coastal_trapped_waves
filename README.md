@@ -27,8 +27,16 @@
 . phase_speed_computation.ipynb 
     compare the Hovmoller diagrams of the filtered signals and compute the phase speed with the radon transform
 
+. EOF_analysis.ipynb 
+    EOF analysis of the datasets along the coastal points
+
+
+
 
 # Diary
+
+21.01.2025
+EOF analysis completed
 
 20.01.2025
 Still working on EOF_analysis. Still not perfect, but better. I should try to perform it along a coastal segment like I did in phase_speed_computation. 
