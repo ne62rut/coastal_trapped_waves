@@ -35,6 +35,9 @@
 
 # Diary
 
+24.01.2025
+Working on correlate_tg_with_grids to generate the plot map_lag_correlation. The second part of the plot now generates a 3x5 plot, for now of 1 single tide gauge. I should put the land in foreground to elimate the strange points that look like inland waters
+
 21.01.2025
 EOF analysis completed
 
