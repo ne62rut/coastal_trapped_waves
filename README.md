@@ -9,7 +9,7 @@
     takes data from the bluelink reanalysis and saves them as daily grids similar to SWOT format 
 
 . create_filtered_time_series_tg.ipynb 
-    isolates a set of TGs in Australia and filter them (saving the filtered version externally)
+    isolates a set of TGs in Australia and filter them (saving the filtered version externally). Generates the figure area_of_study.jpg
     
     
 . create_filtered_time_series.py
@@ -19,16 +19,16 @@
     from the output of 3. reconstructs a daily L4 product, containing the signal filtered in time. There is also a ipynb version of it showing some plots.
     
 . correlate_tg_with_grids.ipynb
-    takes the output of 2. (filtered tide gauges time series) and 3. (filtered altimetry time series) and correlate them, by offering the possibility to select a lag correlation
+    takes the output of 2. (filtered tide gauges time series) and 3. (filtered altimetry time series) and correlate them, by offering the possibility to select a lag correlation. Generate the corresponding figures for the paper.
 
 . correlate_tg_with_grids_1d.ipynb 
-    compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges
+    compare the time series with a filtered version of CMEMS and SWOT maps at the closest location to the tide gauges. Generates the figures: corr_examples.jpg and corr_bar_plot.jpg
     
 . phase_speed_computation.ipynb 
-    compare the Hovmoller diagrams of the filtered signals and compute the phase speed with the radon transform
+    compare the Hovmoller diagrams of the filtered signals and compute the phase speed with the radon transform. Generate the figures: hovmuller.jpg
 
 . EOF_analysis.ipynb 
-    EOF analysis of the datasets along the coastal points
+    EOF analysis of the datasets along the coastal points. Generates the figures: EOF_PC_comparison.jpg and EOF_evolution.jpg (as well as a corresponding gif video)
 
 
 
