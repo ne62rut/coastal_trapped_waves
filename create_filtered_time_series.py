@@ -106,7 +106,7 @@ def save_to_netcdf(lat, lon, unfiltered_series, filtered_series, output_dir):
 # Main processing function
 def main():
     
-    case = 'BLUELINK'  # Choose SWOT, CMEMS, or BLUELINK
+    case = 'CMEMS'  # Choose SWOT, CMEMS, or BLUELINK
     
     # CASE SWOT
     if case == 'SWOT':    
@@ -115,8 +115,8 @@ def main():
     
     elif case == 'CMEMS':            
         # CASE CMEMS
-        base_dir = '/DGFI8/H/work_marcello/giussani_machinelearning_data/SEALEVEL_GLO_PHY_L4_NRT_008_046/2023'
-        output_dir = '/nfs/DGFI8/H/work_marcello/coastal_trapped_waves_data/filtered_grids_CMEMS'
+        base_dir = '/DGFI8/D/CMEMS/SEALEVEL_GLO_PHY_L4_MY_008_047/cmems_obs-sl_glo_phy-ssh_my_allsat-l4-duacs-0.125deg_P1D_202411/2023'
+        output_dir = '/nfs/DGFI8/H/work_marcello/coastal_trapped_waves_data/filtered_grids_CMEMS_DT2024'
     
     elif case == 'BLUELINK':
         # CASE BLUELINK
